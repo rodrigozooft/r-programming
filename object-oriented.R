@@ -192,3 +192,37 @@ microwave_oven_factory <- R6Class(
     
   )
 )
+
+# Add an initialize method
+microwave_oven_factory <- R6Class(
+  "MicrowaveOven",
+  private = list(
+    power_rating_watts = 800,
+    door_is_open = FALSE
+  ),
+  public = list(
+    cook = function(time_seconds) {
+      Sys.sleep(time_seconds)
+      print("Your food is cooked!")
+    },
+    open_door = function() {
+      private$door_is_open <- TRUE
+    },
+    close_door = function() {
+      private$door_is_open <- FALSE
+    },
+    # Add initialize() method here
+    initialize = function(power_rating_watts, door_is_open) {
+      if(!missing(power_rating_watts)) {
+        private$power_rating_watts <- power_rating_watts
+      }
+      if(!missing(door_is_open)){
+        private$door_is_open <- door_is_open
+      }
+      
+    }
+  )
+)
+
+# Make a microwave
+a_microwave_oven <- microwave_oven_factory$new(power_rating_watts = 650, door_is_open = TRUE)
