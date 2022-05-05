@@ -135,3 +135,11 @@ what_am_i.character <- function(x, ...)
 
 # Call what_am_i()
 what_am_i(kitty)
+
+# Define microwave_oven_factory
+microwave_oven_factory <- R6Class(
+  "MicrowaveOven",
+  private = list(
+    power_rating_watts = 800
+  )
+)
