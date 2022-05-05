@@ -359,3 +359,28 @@ a_fancy_microwave <- fancy_microwave_oven_factory$new()
 
 # Call the cook() method
 a_fancy_microwave$cook(1)
+
+# Expose the parent functionality
+fancy_microwave_oven_factory <- R6Class(
+  "FancyMicrowaveOven",
+  inherit = microwave_oven_factory,
+  public = list(
+    cook_baked_potato = function() {
+      self$cook(3)
+    },
+    cook = function(time_seconds) {
+      super$cook(time_seconds)
+      message("Enjoy your dinner!")
+    }
+  ),
+  # Add an active element with a super_ binding
+  active = list(
+    super_ = function() super
+  )
+)
+
+# Instantiate a fancy microwave
+a_fancy_microwave <- fancy_microwave_oven_factory$new()
+
+# Call the super_ binding
+a_fancy_microwave$super_
