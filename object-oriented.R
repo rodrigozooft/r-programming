@@ -226,3 +226,25 @@ microwave_oven_factory <- R6Class(
 
 # Make a microwave
 a_microwave_oven <- microwave_oven_factory$new(power_rating_watts = 650, door_is_open = TRUE)
+
+# Add a binding for power rating
+microwave_oven_factory <- R6Class(
+  "MicrowaveOven",
+  private = list(
+    ..power_rating_watts = 800
+  ),
+  active = list(
+    # Add the binding here
+    power_rating_watts = function(){
+      private$..power_rating_watts
+    }
+
+    
+  )
+)
+
+# Make a microwave 
+a_microwave_oven <- microwave_oven_factory$new()
+
+# Get the power rating
+a_microwave_oven$power_rating_watts
