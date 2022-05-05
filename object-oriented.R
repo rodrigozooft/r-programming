@@ -143,3 +143,29 @@ microwave_oven_factory <- R6Class(
     power_rating_watts = 800
   )
 )
+
+# View the microwave_oven_factory
+microwave_oven_factory
+
+# Make a new microwave oven
+microwave_oven <- microwave_oven_factory$new()
+
+# Add a cook method to the factory definition
+microwave_oven_factory <- R6Class(
+  "MicrowaveOven",
+  private = list(
+    power_rating_watts = 800
+  ),
+  public = list(
+    cook = function(time_seconds) {
+      Sys.sleep(time_seconds)
+      print("Your food is cooked!")
+    }
+  )
+)
+
+# Create microwave oven object
+a_microwave_oven <- microwave_oven_factory$new()
+
+# Call cook method for 1 second
+a_microwave_oven$cook(1)
