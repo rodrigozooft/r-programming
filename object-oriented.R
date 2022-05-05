@@ -288,3 +288,12 @@ a_microwave_oven$power_level_watts <- 1600
 
 # Set the power level to 400 watts
 a_microwave_oven$power_level_watts <- 400
+
+# Explore the microwave oven class
+microwave_oven_factory
+
+# Define a fancy microwave class inheriting from microwave oven
+fancy_microwave_oven_factory <- R6Class(
+    "FancyMicrowaveOven",
+    inherit = microwave_oven_factory
+)
