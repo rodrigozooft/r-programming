@@ -36,3 +36,15 @@ some_vars <- list(
 
 # Loop over some_vars calling type_info() on each element to explore them
 lapply(some_vars, type_info)
+
+# Explore the structure of chess
+str(chess)
+
+# Override the class of chess
+class(chess) <- "chess_game"
+
+# Is chess still a list?
+is.list(chess)
+
+# How many pieces are left on the board?
+length(unlist(chess))
