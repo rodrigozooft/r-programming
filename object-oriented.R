@@ -63,3 +63,14 @@ n_elements_sleep <- get_n_elements(sleep)
 
 # View the result
 n_elements_sleep
+
+# View predefined objects
+ls.str()
+
+# Create a default method for get_n_elements
+get_n_elements.default <- function(x, ...){
+    length(unlist(x))
+}
+
+# Call the method on the ability.cov dataset
+n_elements_ability.cov <- get_n_elements(ability.cov)
