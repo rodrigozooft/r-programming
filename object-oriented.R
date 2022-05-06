@@ -406,3 +406,12 @@ a_high_end_microwave <- high_end_microwave_oven_factory$new()
 
 # Use it to cook for one second
 a_high_end_microwave$cook(1)
+
+# Define a new environment
+env <- new.env()
+  
+# Add an element named perfect
+env$perfect <- c(6,28,496)
+
+# Add an element named bases
+env[["bases"]] <- c("A", "C", "G", "T")
