@@ -415,3 +415,19 @@ env$perfect <- c(6,28,496)
 
 # Add an element named bases
 env[["bases"]] <- c("A", "C", "G", "T")
+
+# Assign lst and env
+lst <- list(
+  perfect = c(6, 28, 496),
+  bases = c("A", "C", "G", "T")
+)
+env <- list2env(lst)
+
+# Copy env
+env2 <- env
+  
+# Change env's bases element
+env[["bases"]][4] <- "U"
+  
+# Test env and env2 identical
+identical(env, env2)
