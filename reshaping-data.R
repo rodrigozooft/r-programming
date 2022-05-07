@@ -185,3 +185,16 @@ planet_df %>%
   geom_text(aes(label = planet), vjust = -1) +
   labs(x = "Diameter (km)", y = "Number of moons") +
   theme(legend.position = "none")
+
+letters <- c("A", "C", "G", "U")
+
+# Create a tibble with all possible 3 way combinations
+codon_df <- expand_grid(
+  letter1 = letters,
+  letter2 = letters,
+  letter3 = letters
+)
+
+codon_df %>% 
+  # Unite these three columns into a "codon" column
+  unite(col = "codon", sep = "")
