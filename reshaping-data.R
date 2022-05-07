@@ -27,3 +27,11 @@ drink_df %>%
   group_by(ingredient, unit) %>% 
   # Calculate the total quantity of each ingredient
   summarize(quantity = sum(quantity))
+
+director_df %>% 
+  # Drop rows with NA values in the director column
+  drop_na(director) %>% 
+  # Spread the director column over separate rows
+  separate_rows(director, sep = ", ") %>% 
+  # Count the number of movies per director
+  count(director, sort = TRUE)
