@@ -213,3 +213,13 @@ space_df %>%
   # Create a line plot with n_in_space over year, color by species
   ggplot(aes(x = year, y = n_in_space, color = species)) +
   geom_line()
+
+# Create a tibble with all combinations of dates and reactors
+full_df <- expand_grid(
+  date = dates,
+  reactor = reactors,
+)
+
+# Find the reactor - date combinations not present in reactor_df
+full_df %>% 
+  anti_join(reactor_df, by = c("date", "reactor"))
