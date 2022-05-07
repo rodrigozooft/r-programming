@@ -35,3 +35,10 @@ director_df %>%
   separate_rows(director, sep = ", ") %>% 
   # Count the number of movies per director
   count(director, sort = TRUE)
+
+sales_df %>% 
+  # Impute the year column
+  fill(year, .direction = c("up")) %>%
+  # Create a line plot with sales per quarter colored by year.
+  ggplot(aes(x = quarter, y = sales, color = year, group = year)) +
+  geom_line()
