@@ -173,3 +173,15 @@ planet_df %>%
   labs(x = "Distance to sun (million km)", 
        y = "Mean temperature (°C)") +
   theme(legend.position = "none")
+
+planet_df %>%
+  # Pivot all columns except metric to long format
+  pivot_longer(-metric, names_to = "planet") %>% 
+  # Put each metric in its own column
+  pivot_wider(names_from = metric, values_from = value) %>% 
+  # Plot the number of moons vs planet diameter
+  ggplot(aes(y = number_of_moons, x = diameter)) +
+  geom_point(aes(size = diameter)) +
+  geom_text(aes(label = planet), vjust = -1) +
+  labs(x = "Diameter (km)", y = "Number of moons") +
+  theme(legend.position = "none")
