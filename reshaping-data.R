@@ -149,3 +149,7 @@ who_df %>%
   ) %>%
   # Create a plot with life expectancy over obesity
   ggplot(aes(x = pct.obese, y = life.exp, color = sex)) + geom_point()
+
+dog_df %>% 
+  # Create one row for each participant and add the id
+  uncount(weights = n_participants, .id = 'dog_id')
