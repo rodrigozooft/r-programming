@@ -247,3 +247,8 @@ medal_df %>%
   ggplot(aes(x = year, y = n_medals, color = team)) +
   geom_line() +
   scale_color_brewer(palette = "Paired")
+
+outer_dates <- c(as.Date("1980-01-01"), as.Date("1980-12-31"))
+
+# Generate the dates for all days in 1980
+full_seq(outer_dates, period = 1)
