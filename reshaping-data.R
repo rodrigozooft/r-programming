@@ -341,3 +341,8 @@ movie_df %>%
     year = "Year",
     rating = list("Ratings", "Rotten Tomatoes")
   )
+
+ansur_df %>% 
+  # Group the data by branch and sex, then nest
+  group_by(branch, sex) %>% 
+  nest()
