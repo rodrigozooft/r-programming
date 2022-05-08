@@ -333,3 +333,11 @@ planet_df %>%
 
 character_df %>% 
   hoist(metadata, first_film = list("films", 1))
+
+movie_df %>% 
+  hoist(
+    movie,
+    title = "Title",
+    year = "Year",
+    rating = list("Ratings", "Rotten Tomatoes")
+  )
