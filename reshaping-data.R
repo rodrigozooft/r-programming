@@ -313,3 +313,10 @@ tibble(movie = movie_planets_list) %>%
   unnest_wider(movie) %>% 
   # Unnest the planets column
   unnest_wider(planets)
+
+# Create a tibble from movie_planets_list
+tibble(movie = movie_planets_list) %>% 
+  # Unnest the movie column in the correct direction
+  unnest_wider(movie) %>% 
+  # Unnest the planets column in the correct direction
+  unnest_longer(planets)
