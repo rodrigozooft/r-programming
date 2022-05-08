@@ -330,3 +330,6 @@ planet_df %>%
   unnest_wider(moon_data) %>% 
   # Get the top five largest moons by radius
   slice_max(radius, n = 5)
+
+character_df %>% 
+  hoist(metadata, first_film = list("films", 1))
