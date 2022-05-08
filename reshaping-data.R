@@ -223,3 +223,13 @@ full_df <- expand_grid(
 # Find the reactor - date combinations not present in reactor_df
 full_df %>% 
   anti_join(reactor_df, by = c("date", "reactor"))
+
+planets = c("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune")
+
+planet_df %>% 
+  complete(
+    # Complete the planet variable
+    planet = planets,
+    # Overwrite NA values for n_moons with 0L
+    fill = list(n_moons = 0L)
+  )
