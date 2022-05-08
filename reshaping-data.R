@@ -233,3 +233,17 @@ planet_df %>%
     # Overwrite NA values for n_moons with 0L
     fill = list(n_moons = 0L)
   )
+
+medal_df %>% 
+  # Count the medals won per team and year
+  count(team, year, name = "n_medals") %>% 
+  # Complete the team and year variables, fill n_medals with zeros
+  complete(
+    team,
+    year,
+    fill = list(n_medals = 0L)
+  ) %>% 
+  # Plot n_medals over year, colored by team
+  ggplot(aes(x = year, y = n_medals, color = team)) +
+  geom_line() +
+  scale_color_brewer(palette = "Paired")
