@@ -306,3 +306,10 @@ sensor_df %>%
   ggplot(aes(x = time, y = n_people, fill = direction)) +
   geom_area() +
   geom_line(aes(y = total_inside))
+
+# Create a tibble with a movie column
+tibble(movie = movie_planets_list) %>% 
+  # Unnest the movie column
+  unnest_wider(movie) %>% 
+  # Unnest the planets column
+  unnest_wider(planets)
