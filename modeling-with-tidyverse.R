@@ -74,3 +74,14 @@ house_prices %>%
 
 # Prediction of price for houses without view
 10^(5.66)
+
+# Load packages
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+
+# Plot 
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_point() +
+  labs(x = "beauty score", y = "score") +
+  geom_smooth(method = "lm", se = FALSE)
