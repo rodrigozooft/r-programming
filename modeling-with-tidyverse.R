@@ -143,3 +143,13 @@ model_score_4_points
 ggplot(model_score_4_points, aes(x = residual)) +
   geom_histogram() +
   labs(x = "residuals", title = "Residuals from score ~ rank model")
+
+# Remove outlier
+house_prices_transform <- house_prices %>%
+  filter(bedrooms < 30)
+
+# Create scatterplot with regression line
+ggplot(house_prices_transform, aes(x = bedrooms, y = log10_price)) +
+  geom_point() +
+  labs(x = "Number of bedrooms", y = "log10 price") +
+  geom_smooth(method = "lm", se = FALSE)
