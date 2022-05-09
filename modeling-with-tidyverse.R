@@ -119,3 +119,18 @@ ggplot(evals, aes(x = rank, y = score)) +
 evals %>%
   group_by(rank) %>%
   summarize(n = n(), mean_score = mean(score), sd_score = sd(score))
+
+# Fit regression model
+model_score_4 <- lm(score ~ rank, data = evals)
+
+# Get regression table
+get_regression_table(model_score_4)
+
+# teaching mean
+teaching_mean <- 4.28
+
+# tenure track mean
+tenure_track_mean <- 4.28 - 0.13
+
+# tenured mean
+tenured_mean <- 4.28 - 0.145
