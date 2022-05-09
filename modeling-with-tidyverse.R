@@ -111,3 +111,11 @@ get_regression_table(model_score_2)
 # Get all fitted/predicted values and residuals
 get_regression_points(model_score_2) %>% 
   mutate(residual_2 = score - score_hat)
+
+ggplot(evals, aes(x = rank, y = score)) +
+  geom_boxplot() +
+  labs(x = "rank", y = "score")
+
+evals %>%
+  group_by(rank) %>%
+  summarize(n = n(), mean_score = mean(score), sd_score = sd(score))
