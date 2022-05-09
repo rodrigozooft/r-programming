@@ -16,3 +16,12 @@ evals %>%
   summarize(mean_age = mean(age),
             median_age = median(age),
             sd_age = sd(age))
+
+# Load packages
+library(moderndive)
+library(ggplot2)
+
+# Plot the histogram
+ggplot(house_prices, aes(x = sqft_living)) +
+  geom_histogram() +
+  labs(x = "Size (sq.feet)", y = "count")
