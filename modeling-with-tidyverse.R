@@ -53,3 +53,13 @@ ggplot(evals, aes(x = bty_avg, y = score)) +
 # Compute correlation
 evals %>%
   summarize(correlation = cor(score, bty_avg))
+
+# View the structure of log10_price and waterfront
+house_prices %>%
+  select(log10_price, waterfront) %>%
+  glimpse()
+
+# Plot 
+ggplot(house_prices, aes(x = waterfront, y = log10_price)) +
+  geom_boxplot() +
+  labs(x = "waterfront", y = "log10 price")
