@@ -25,3 +25,17 @@ library(ggplot2)
 ggplot(house_prices, aes(x = sqft_living)) +
   geom_histogram() +
   labs(x = "Size (sq.feet)", y = "count")
+
+# Load packages
+library(moderndive)
+library(dplyr)
+library(ggplot2)
+
+# Add log10_size
+house_prices_2 <- house_prices %>%
+  mutate(log10_size = log10(sqft_living))
+
+# Plot the histogram  
+ggplot(house_prices_2, aes(x = log10_size)) +
+  geom_histogram() +
+  labs(x = "log10 size", y = "count")
