@@ -49,3 +49,7 @@ ggplot(evals, aes(x = bty_avg)) +
 ggplot(evals, aes(x = bty_avg, y = score)) +
   geom_jitter() +
   labs(x = "beauty score", y = "teaching score")
+
+# Compute correlation
+evals %>%
+  summarize(correlation = cor(score, bty_avg))
