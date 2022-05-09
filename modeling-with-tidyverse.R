@@ -63,3 +63,14 @@ house_prices %>%
 ggplot(house_prices, aes(x = waterfront, y = log10_price)) +
   geom_boxplot() +
   labs(x = "waterfront", y = "log10 price")
+
+# Calculate stats
+house_prices %>%
+  group_by(waterfront) %>%
+  summarize(mean_log10_price = mean(log10_price), n = n())
+  
+# Prediction of price for houses with view
+10^(6.12)
+
+# Prediction of price for houses without view
+10^(5.66)
