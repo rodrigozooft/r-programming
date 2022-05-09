@@ -134,3 +134,12 @@ tenure_track_mean <- 4.28 - 0.13
 
 # tenured mean
 tenured_mean <- 4.28 - 0.145
+
+# Calculate predictions and residuals
+model_score_4_points <- get_regression_points(model_score_4)
+model_score_4_points
+
+# Plot residuals
+ggplot(model_score_4_points, aes(x = residual)) +
+  geom_histogram() +
+  labs(x = "residuals", title = "Residuals from score ~ rank model")
