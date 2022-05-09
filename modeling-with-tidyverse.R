@@ -153,3 +153,10 @@ ggplot(house_prices_transform, aes(x = bedrooms, y = log10_price)) +
   geom_point() +
   labs(x = "Number of bedrooms", y = "log10 price") +
   geom_smooth(method = "lm", se = FALSE)
+
+# Fit model
+model_price_2 <- lm(log10_price ~ log10_size + bedrooms, 
+                    data = house_prices)
+
+# Get regression table
+get_regression_table(model_price_2)
