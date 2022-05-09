@@ -85,3 +85,12 @@ ggplot(evals, aes(x = bty_avg, y = score)) +
   geom_point() +
   labs(x = "beauty score", y = "score") +
   geom_smooth(method = "lm", se = FALSE)
+
+# Load package
+library(moderndive)
+
+# Fit model
+model_score_2 <- lm(score ~ bty_avg, data = evals)
+
+# Output regression table
+get_regression_table(model_score_2)
