@@ -94,3 +94,10 @@ model_score_2 <- lm(score ~ bty_avg, data = evals)
 
 # Output regression table
 get_regression_table(model_score_2)
+
+# Use fitted intercept and slope to get a prediction
+y_hat <- 3.88 + 5 * 0.0670
+y_hat
+
+# Compute residual y - y_hat
+4.7 - y_hat
