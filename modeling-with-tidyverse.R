@@ -101,3 +101,13 @@ y_hat
 
 # Compute residual y - y_hat
 4.7 - y_hat
+
+# Fit regression model
+model_score_2 <- lm(score ~ bty_avg, data = evals)
+
+# Get regression table
+get_regression_table(model_score_2)
+
+# Get all fitted/predicted values and residuals
+get_regression_points(model_score_2) %>% 
+  mutate(residual_2 = score - score_hat)
