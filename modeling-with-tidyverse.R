@@ -39,3 +39,13 @@ house_prices_2 <- house_prices %>%
 ggplot(house_prices_2, aes(x = log10_size)) +
   geom_histogram() +
   labs(x = "log10 size", y = "count")
+
+# Plot the histogram
+ggplot(evals, aes(x = bty_avg)) +
+  geom_histogram(binwidth = 0.5) +
+  labs(x = "Beauty score", y = "count")
+
+# Jitter plot
+ggplot(evals, aes(x = bty_avg, y = score)) +
+  geom_jitter() +
+  labs(x = "beauty score", y = "teaching score")
