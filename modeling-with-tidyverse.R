@@ -228,3 +228,29 @@ get_regression_points(model_price_2) %>%
   mutate(sq_residuals = residual^2) %>%
   summarize(mse = mean(sq_residuals)) %>% 
   mutate(rmse = sqrt(mse))
+
+# MSE and RMSE for model_price_2
+get_regression_points(model_price_2) %>%
+  mutate(sq_residuals = residual^2) %>%
+  summarize(mse = mean(sq_residuals), rmse = sqrt(mean(sq_residuals)))
+
+# MSE and RMSE for model_price_4
+get_regression_points(model_price_4) %>%
+  mutate(sq_residuals = residual^2) %>%
+  summarize(mse = mean(sq_residuals), rmse = sqrt(mean(sq_residuals)))
+
+# Set random number generator seed value for reproducibility
+set.seed(76)
+
+# Randomly reorder the rows
+house_prices_shuffled <- house_prices %>% 
+  sample_frac(size = 1, replace = FALSE)
+
+# Train/test split
+train <- house_prices_shuffled %>%
+  slice(1:10000)
+test <- house_prices_shuffled %>%
+  slice(10001:21613)
+
+# Fit model to training set
+train_model_2 <- lm(log10_price ~ log10_size + bedrooms, data = train)
