@@ -166,3 +166,10 @@ get_regression_table(model_price_2)
 
 # Make prediction dollars
 10^(5.414)
+
+# Fit model
+model_price_4 <- lm(log10_price ~ log10_size + waterfront, 
+                    data = house_prices)
+
+# Get regression table
+get_regression_table(model_price_4)
