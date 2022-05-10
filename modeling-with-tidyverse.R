@@ -222,3 +222,9 @@ model_price_4 <- lm(log10_price ~ log10_size + waterfront,
 # Get fitted/values & residuals, compute R^2 using residuals
 get_regression_points(model_price_4) %>%
   summarize(r_squared = 1 - var(residual) / var(log10_price))
+
+# Get all residuals, square them, take the mean and square root
+get_regression_points(model_price_2) %>%
+  mutate(sq_residuals = residual^2) %>%
+  summarize(mse = mean(sq_residuals)) %>% 
+  mutate(rmse = sqrt(mse))
