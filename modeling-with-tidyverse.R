@@ -189,3 +189,12 @@ new_houses_2
 # Get predictions price_hat in dollars on "new" houses
 get_regression_points(model_price_4, newdata = new_houses_2) %>% 
   mutate(price_hat = 10^ (log10_price_hat))
+
+  # Model 4
+model_price_4 <- lm(log10_price ~ log10_size + waterfront, 
+                    data = house_prices)
+
+# Calculate squared residuals
+get_regression_points(model_price_4) %>%
+  mutate(sq_residuals = residual ^ 2) %>%
+  summarize(sum_sq_residuals = sum(sq_residuals))
