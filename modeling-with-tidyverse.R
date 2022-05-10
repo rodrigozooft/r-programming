@@ -206,3 +206,19 @@ model_price_2 <- lm(log10_price ~ log10_size + bedrooms,
 # Get fitted/values & residuals, compute R^2 using residuals
 get_regression_points(model_price_2) %>%
   summarize(r_squared = 1 - var(residual) / var(log10_price))
+
+# Fit model_price_2
+model_price_2 <- lm(log10_price ~ log10_size + bedrooms,
+                    data = house_prices)
+
+# Get fitted/values & residuals, compute R^2 using residuals
+get_regression_points(model_price_2) %>%
+  summarize(r_squared = 1 - var(residual) / var(log10_price))
+  
+# Fit model_price_4
+model_price_4 <- lm(log10_price ~ log10_size + waterfront,
+                    data = house_prices)
+
+# Get fitted/values & residuals, compute R^2 using residuals
+get_regression_points(model_price_4) %>%
+  summarize(r_squared = 1 - var(residual) / var(log10_price))
