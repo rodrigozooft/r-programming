@@ -160,3 +160,9 @@ model_price_2 <- lm(log10_price ~ log10_size + bedrooms,
 
 # Get regression table
 get_regression_table(model_price_2)
+
+# Make prediction in log10 dollars
+2.69 + 0.941 * log10(1000) - 0.033 * 3
+
+# Make prediction dollars
+10^(5.414)
