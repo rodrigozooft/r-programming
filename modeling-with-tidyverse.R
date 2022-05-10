@@ -173,3 +173,12 @@ model_price_4 <- lm(log10_price ~ log10_size + waterfront,
 
 # Get regression table
 get_regression_table(model_price_4)
+
+# Get regression table
+get_regression_table(model_price_4)
+
+# Prediction for House A
+10^((2.96 + 0.322) + 2.9 * 0.825)
+
+# Prediction for House B
+10^(2.96 + 3.1 * 0.825)
