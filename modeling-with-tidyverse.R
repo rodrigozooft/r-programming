@@ -198,3 +198,11 @@ model_price_4 <- lm(log10_price ~ log10_size + waterfront,
 get_regression_points(model_price_4) %>%
   mutate(sq_residuals = residual ^ 2) %>%
   summarize(sum_sq_residuals = sum(sq_residuals))
+
+# Fit model
+model_price_2 <- lm(log10_price ~ log10_size + bedrooms,
+                    data = house_prices)
+                    
+# Get fitted/values & residuals, compute R^2 using residuals
+get_regression_points(model_price_2) %>%
+  summarize(r_squared = 1 - var(residual) / var(log10_price))
