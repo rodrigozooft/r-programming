@@ -182,3 +182,10 @@ get_regression_table(model_price_4)
 
 # Prediction for House B
 10^(2.96 + 3.1 * 0.825)
+
+# View the "new" houses
+new_houses_2
+
+# Get predictions price_hat in dollars on "new" houses
+get_regression_points(model_price_4, newdata = new_houses_2) %>% 
+  mutate(price_hat = 10^ (log10_price_hat))
