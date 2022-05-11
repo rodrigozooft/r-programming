@@ -8,3 +8,11 @@ ilo_data  %>%
 
 # Examine ilo_data
 ilo_data
+
+# Turn year and country into a factor
+ilo_data_corrected <- ilo_data %>%
+  mutate(year = as.factor(as.numeric(year)),
+        country = as.factor(country))
+
+# See the results
+ilo_data_corrected
