@@ -186,3 +186,22 @@ ggplot(ilo_data) +
               y = country,
               label = round(working_hours, 1))
           )
+
+# Save plot into an object for reuse
+ilo_dot_plot <- ggplot(ilo_data) +
+  geom_path(aes(x = working_hours, y = country),
+            arrow = arrow(length = unit(1.5, "mm"), type = "closed")) +
+    # Specify the hjust aesthetic with a conditional value
+    geom_text(
+          aes(x = working_hours,
+              y = country,
+              label = round(working_hours, 1),
+              hjust = ifelse(year == "2006", 1.4, -0.4)
+            ),
+          # Change the appearance of the text
+          size = 3,
+          family = "Bookman",
+          color = "gray25"
+          )
+
+ilo_dot_plot
