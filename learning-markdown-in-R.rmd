@@ -1,0 +1,15 @@
+---
+title: "Communicating with Data in the Tidyverse"
+author: "Rod Morgado"
+date: "May 11th, 2022"
+output: html_document
+---
+
+The following plot shows the relationship between the number of cylinders and miles per gallon in the `mtcars` dataset.
+
+```{r}
+boxplot(mtcars$mpg ~ mtcars$cyl)
+```
+
+As one can see, the more cylinders, the less miles per gallons.
+
