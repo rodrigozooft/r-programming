@@ -80,3 +80,10 @@ ilo_plot <- ilo_plot +
 
 # Render the plot object
 ilo_plot
+
+ilo_plot +
+  # "theme" calls can be stacked upon each other, so this is already the third call of "theme"
+  theme(
+    plot.background = element_rect(fill = 'gray95'),
+    plot.margin = unit(c(5, 10, 5, 10), units = "mm")
+  )
