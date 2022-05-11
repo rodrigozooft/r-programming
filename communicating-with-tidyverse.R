@@ -155,3 +155,13 @@ ggplot(ilo_data) +
   geom_path(aes(x = working_hours, y = country),
   # Add an arrow to each path
   arrow = arrow(length = unit(1.5, "mm"), type = "closed"))
+
+ggplot(ilo_data) +
+  geom_path(aes(x = working_hours, y = country),
+            arrow = arrow(length = unit(1.5, "mm"), type = "closed")) +
+  # Add a geom_text() geometry
+  geom_text(
+          aes(x = working_hours,
+              y = country,
+              label = round(working_hours, 1))
+        )
