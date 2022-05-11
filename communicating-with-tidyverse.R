@@ -40,3 +40,15 @@ plot_data <- ilo_data %>%
 # Create the scatter plot
 ggplot(plot_data) +
   geom_point(aes(x = working_hours, y = hourly_compensation))
+
+# Create the plot
+ggplot(plot_data) +
+  geom_point(aes(x = working_hours, y = hourly_compensation)) +
+  # Add labels
+  labs(
+    x = "Working hours per week",
+    y = "Hourly compensation",
+    title = "The more people work, the less compensation they seem to receive",
+    subtitle = "Working hours and hourly compensation in European countries, 2006",
+    caption = "Data source: ILO, 2017"
+  )
