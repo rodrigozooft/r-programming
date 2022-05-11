@@ -106,3 +106,26 @@ ilo_plot <- ggplot(ilo_data, aes(x = working_hours, y = hourly_compensation)) +
   facet_grid(facets = . ~ year)
  
 ilo_plot
+
+# For a starter, let's look at what you did before: adding various theme calls to your plot object
+ilo_plot +
+  theme_minimal() +
+  theme(
+    text = element_text(family = "Bookman", color = "gray25"),
+    plot.subtitle = element_text(size = 12),
+    plot.caption = element_text(color = "gray30"),
+    plot.background = element_rect(fill = "gray95"),
+    plot.margin = unit(c(5, 10, 5, 10), units = "mm")
+  )
+      
+# Define your own theme function below
+theme_ilo <- function() {
+    theme_minimal() +
+    theme(
+            text = element_text(family = "Bookman", color = "gray25"),
+    plot.subtitle = element_text(size = 12),
+    plot.caption = element_text(color = "gray30"),
+    plot.background = element_rect(fill = "gray95"),
+    plot.margin = unit(c(5, 10, 5, 10), units = "mm")
+    )
+}
