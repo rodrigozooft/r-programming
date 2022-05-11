@@ -205,3 +205,21 @@ ilo_dot_plot <- ggplot(ilo_data) +
           )
 
 ilo_dot_plot
+
+# Reuse ilo_dot_plot
+ilo_dot_plot <- ilo_dot_plot +
+  # Add labels to the plot
+  labs(
+    x = "Working hours per week",
+    y = "Country",
+    title = "People work less in 2006 compared to 1996",
+    subtitle = "Working hours in European countries, development since 1996",
+    caption = "Data source: ILO, 2017"
+  ) +
+  # Apply your theme
+  theme_ilo() +
+  # Change the viewport
+  coord_cartesian(xlim = c(25, 41))
+  
+# View the plot
+ilo_dot_plot
