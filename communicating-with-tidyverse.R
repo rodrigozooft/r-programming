@@ -223,3 +223,31 @@ ilo_dot_plot <- ilo_dot_plot +
   
 # View the plot
 ilo_dot_plot
+
+# Compute temporary data set for optimal label placement
+median_working_hours <- ilo_data %>%
+  group_by(country) %>%
+  summarize(median_working_hours_per_country = median(working_hours)) %>%
+  ungroup()
+
+# Have a look at the structure of this data set
+str(median_working_hours)
+
+ilo_dot_plot +
+  # Add label for country
+  geom_text(data = median_working_hours,
+            aes(y = country,
+                x = median_working_hours_per_country,
+                label = country),
+            vjust = 2,
+            family = "Bookman",
+            color = "gray25") +
+  # Remove axes and grids
+  theme(
+    axis.ticks = element_blank(),
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    # Also, let's reduce the font size of the subtitle
+    plot.subtitle = element_text(size = 9)
+  )
