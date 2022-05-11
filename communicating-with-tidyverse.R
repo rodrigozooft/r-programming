@@ -67,3 +67,16 @@ ilo_plot <- ggplot(plot_data) +
 # Add a different theme
 ilo_plot +
   theme_dark()
+
+ilo_plot <- ilo_plot +
+  theme_minimal() +
+  # Customize the "minimal" theme with another custom "theme" call
+  theme(
+    text = element_text(family = 'Bookman'),
+    title = element_text(color = 'gray25'),
+    plot.caption = element_text(color = 'gray30'),
+    plot.subtitle = element_text(size = 12)
+  )
+
+# Render the plot object
+ilo_plot
