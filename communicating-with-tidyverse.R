@@ -145,3 +145,8 @@ ilo_plot +
     # Change the color of the text
     strip.text = element_text(color = 'white')
   )
+
+  # Create the dot plot
+ilo_data %>%
+    ggplot() + 
+    geom_path(aes(x = working_hours, y = country))
