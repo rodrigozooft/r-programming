@@ -23,3 +23,12 @@ european_countries
 # Only retain European countries
 ilo_data <- ilo_data %>%
   filter(country %in% european_countries)
+
+# Examine the structure of ilo_data
+str(ilo_data)
+
+# Group and summarize the data
+ilo_data %>%
+  group_by(year) %>%
+  summarize(mean_hourly_compensation = mean(hourly_compensation),
+            mean_working_hours = mean(working_hours))
