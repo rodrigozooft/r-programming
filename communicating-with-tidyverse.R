@@ -150,3 +150,8 @@ ilo_plot +
 ilo_data %>%
     ggplot() + 
     geom_path(aes(x = working_hours, y = country))
+
+ggplot(ilo_data) +
+  geom_path(aes(x = working_hours, y = country),
+  # Add an arrow to each path
+  arrow = arrow(length = unit(1.5, "mm"), type = "closed"))
