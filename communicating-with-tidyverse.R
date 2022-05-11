@@ -32,3 +32,11 @@ ilo_data %>%
   group_by(year) %>%
   summarize(mean_hourly_compensation = mean(hourly_compensation),
             mean_working_hours = mean(working_hours))
+
+# Filter for 2006
+plot_data <- ilo_data %>%
+  filter(year == 2006)
+  
+# Create the scatter plot
+ggplot(plot_data) +
+  geom_point(aes(x = working_hours, y = hourly_compensation))
