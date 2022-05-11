@@ -87,3 +87,22 @@ ilo_plot +
     plot.background = element_rect(fill = 'gray95'),
     plot.margin = unit(c(5, 10, 5, 10), units = "mm")
   )
+
+  # Filter ilo_data to retain the years 1996 and 2006
+ilo_data <- ilo_data %>%
+  filter(year %in% c(1996, 2006))
+
+# Again, you save the plot object into a variable so you can save typing later on
+ilo_plot <- ggplot(ilo_data, aes(x = working_hours, y = hourly_compensation)) +
+  geom_point() +
+   labs(
+    x = "Working hours per week",
+    y = "Hourly compensation",
+    title = "The more people work, the less compensation they seem to receive",
+    subtitle = "Working hours and hourly compensation in European countries, 2006",
+    caption = "Data source: ILO, 2017"
+  ) +
+  # Add facets here
+  facet_grid(facets = . ~ year)
+ 
+ilo_plot
