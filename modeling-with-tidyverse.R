@@ -254,3 +254,11 @@ test <- house_prices_shuffled %>%
 
 # Fit model to training set
 train_model_2 <- lm(log10_price ~ log10_size + bedrooms, data = train)
+
+# Make predictions on test set
+get_regression_points(train_model_2, newdata = test)
+
+# Compute RMSE
+get_regression_points(train_model_2, newdata = test) %>% 
+  mutate(sq_residuals = residual ^ 2) %>%
+  summarize(rmse = sqrt(mean(sq_residuals)))
