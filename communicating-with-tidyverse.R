@@ -165,3 +165,24 @@ ggplot(ilo_data) +
               y = country,
               label = round(working_hours, 1))
         )
+
+library(forcats)
+
+# Reorder country factor levels
+ilo_data <- ilo_data %>%
+  # Arrange data frame
+  arrange(year) %>%
+  # Reorder countries by working hours in 2006
+  mutate(country = fct_reorder(country,
+                               working_hours,
+                               last))
+
+# Plot again
+ggplot(ilo_data) +
+  geom_path(aes(x = working_hours, y = country),
+            arrow = arrow(length = unit(1.5, "mm"), type = "closed")) +
+    geom_text(
+          aes(x = working_hours,
+              y = country,
+              label = round(working_hours, 1))
+          )
