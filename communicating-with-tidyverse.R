@@ -16,3 +16,10 @@ ilo_data_corrected <- ilo_data %>%
 
 # See the results
 ilo_data_corrected
+
+# Examine the European countries vector
+european_countries
+
+# Only retain European countries
+ilo_data <- ilo_data %>%
+  filter(country %in% european_countries)
