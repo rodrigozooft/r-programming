@@ -129,3 +129,19 @@ theme_ilo <- function() {
     plot.margin = unit(c(5, 10, 5, 10), units = "mm")
     )
 }
+
+# Apply your theme function (dont't forget to call it with parentheses!)
+ilo_plot <- ilo_plot +
+  theme_ilo()
+
+# Examine ilo_plot
+ilo_plot
+
+ilo_plot +
+  # Add another theme call
+  theme(
+    # Change the background fill and color
+    strip.background = element_rect(fill = 'gray60', color = 'gray95'),
+    # Change the color of the text
+    strip.text = element_text(color = 'white')
+  )
