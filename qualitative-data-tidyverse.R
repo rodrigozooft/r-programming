@@ -28,4 +28,15 @@ responses_as_factors %>%
     # pull CurrentJobTitleSelect
     pull(CurrentJobTitleSelect) %>%
     # get the values of the levels
-    levels()    
+    levels()
+# Make a bar plot
+ggplot(multiple_choice_responses, aes(fct_infreq(EmployerIndustry))) + 
+    geom_bar() + 
+    # flip the coordinates
+    coord_flip()
+
+# Make a bar plot
+ggplot(multiple_choice_responses, aes(x = fct_rev(fct_infreq(EmployerIndustry)))) + 
+    geom_bar() + 
+    # flip the coordinates
+    coord_flip()    
