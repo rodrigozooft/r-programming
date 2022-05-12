@@ -72,7 +72,6 @@ This is where you will preprocess the data.
 
 This is where you will plot the data.
 
-
 ---
 title: "The reduction in weekly working hours in Europe" 
 subtitle: "Looking at the development between 1996 and 2006"
@@ -155,7 +154,7 @@ theme_ilo <- function(){
 
 Then, the plot is produced. 
 
-```{r}
+```{r fig.height = 8, fig.width = 4.5, fig.align = "center"}
 # Compute temporary data set for optimal label placement
 median_working_hours <- ilo_data %>%
   group_by(country) %>%
