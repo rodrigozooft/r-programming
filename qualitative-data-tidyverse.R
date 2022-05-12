@@ -13,3 +13,13 @@ number_of_levels <- responses_as_factors %>%
     summarise_all(nlevels) %>%
     # change the dataset from wide to long
     gather(variable, num_levels)
+
+# Select the 3 rows with the highest number of levels
+number_of_levels %>%
+    top_n(3, num_levels)
+    
+number_of_levels %>%
+	# filter for where the column called variable equals CurrentJobTitleSelect
+    filter(variable == "CurrentJobTitleSelect") %>%
+	# pull num_levels
+    pull()    
