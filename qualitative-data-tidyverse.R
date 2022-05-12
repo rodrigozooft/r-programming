@@ -22,4 +22,10 @@ number_of_levels %>%
 	# filter for where the column called variable equals CurrentJobTitleSelect
     filter(variable == "CurrentJobTitleSelect") %>%
 	# pull num_levels
-    pull()    
+    pull()
+
+responses_as_factors %>%
+    # pull CurrentJobTitleSelect
+    pull(CurrentJobTitleSelect) %>%
+    # get the values of the levels
+    levels()    
