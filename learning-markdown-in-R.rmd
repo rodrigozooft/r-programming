@@ -86,7 +86,7 @@ The **International Labour Organization (ILO)** has many [data sets](http://www.
 
 ## Preparations 
 
-```{r}
+```{r loading_packages, message = FALSE}
 library(dplyr)
 library(ggplot2)
 library(forcats)
@@ -98,11 +98,11 @@ library(forcats)
 
 The herein used data can be found in the [statistics database of the ILO](http://www.ilo.org/ilostat/faces/wcnav_defaultSelection;ILOSTATCOOKIE=ZOm2Lqrr-OIuzxNGn2_08bNe9AmHQ1kUA6FydqyZJeIudFLb2Yz5!1845546174?_afrLoop=32158017365146&_afrWindowMode=0&_afrWindowId=null#!%40%40%3F_afrWindowId%3Dnull%26_afrLoop%3D32158017365146%26_afrWindowMode%3D0%26_adf.ctrl-state%3D4cwaylvi8_4). For the purpose of this course, it has been slightly preprocessed.
 
-```{r}
+```{r loading_data}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_5807/datasets/ilo_data.RData"))
 ```
 
-```{r}
+```{r generating_summary_statistics}
 # Some summary statistics
 ilo_data %>%
   group_by(year) %>%
@@ -136,7 +136,7 @@ In the following, a plot that shows the reduction of weekly working hours from 1
 
 First, a custom theme is defined.
 
-```{r}
+```{r defining_a_theme, echo = FALSE}
 # Better to define your own function than to always type the same stuff
 theme_ilo <- function(){
   theme_minimal() +
