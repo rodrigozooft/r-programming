@@ -152,4 +152,3 @@ The results of another analysis are shown here, even though they cannot be repro
 ![The relationship between weekly working hours and hourly compensation.](http://s3.amazonaws.com/assets.datacamp.com/production/course_5807/datasets/relationship.png)
 
 As you can see, there's also an interesting relationship. The more people work, the less compensation they seem to receive, which seems kind of unfair. This is quite possibly related to other proxy variables like overall economic stability and performance of a country.
-
