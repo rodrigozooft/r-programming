@@ -39,4 +39,17 @@ ggplot(multiple_choice_responses, aes(fct_infreq(EmployerIndustry))) +
 ggplot(multiple_choice_responses, aes(x = fct_rev(fct_infreq(EmployerIndustry)))) + 
     geom_bar() + 
     # flip the coordinates
+    coord_flip()
+
+multiple_choice_responses %>%
+  # remove NAs
+  filter(!is.na(EmployerIndustry) & !is.na(Age)) %>%
+  # get mean_age by EmployerIndustry
+  group_by(EmployerIndustry) %>%
+  summarise(mean_age = mean(Age)) %>%
+  # reorder EmployerIndustry by mean_age 
+  mutate(EmployerIndustry = fct_reorder(EmployerIndustry, mean_age)) %>%
+  # make a scatterplot of EmployerIndustry by mean_age
+  ggplot(aes(x = EmployerIndustry, y = mean_age)) + 
+    geom_point() + 
     coord_flip()    
