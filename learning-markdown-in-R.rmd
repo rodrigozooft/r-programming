@@ -208,3 +208,11 @@ ggplot(ilo_data) +
   # Reset coordinate system
   coord_cartesian(xlim = c(25, 41))
 ```
+
+####  An interesting correlation
+
+The results of another analysis are shown here, even though they cannot be reproduced with the data at hand.
+
+![The relationship between weekly working hours and hourly compensation](http://s3.amazonaws.com/assets.datacamp.com/production/course_5807/datasets/relationship.png)
+
+As you can see, there's also an interesting relationship. The more people work, the less compensation they seem to receive. This is quite possibly related to other proxy variables like overall economic stability and performance of a country.
