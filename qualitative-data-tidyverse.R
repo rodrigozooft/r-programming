@@ -111,3 +111,13 @@ multiple_choice_responses %>%
   # count the frequency of your new variable, sorted in descending order
   count(ml_method, sort = TRUE)
 
+learning_platform_usefulness <- multiple_choice_responses %>%
+  # select columns with LearningPlatformUsefulness in title
+  select(contains("LearningPlatformUsefulness")) %>%
+  # change data from wide to long
+  gather(learning_platform, usefulness) %>%
+  # remove rows where usefulness is NA
+  filter(!is.na(usefulness)) %>%
+  # remove "LearningPlatformUsefulness" from each string in learning_platform 
+  mutate(learning_platform = str_remove(learning_platform, "LearningPlatformUsefulness"))
+
