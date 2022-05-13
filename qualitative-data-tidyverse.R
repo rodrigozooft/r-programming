@@ -134,3 +134,15 @@ ggplot(perc_useful_platform, aes(x = usefulness, y = perc, group = learning_plat
   geom_line() + 
   facet_wrap(~ learning_platform)
 
+usefulness_by_platform <- learning_platform_usefulness %>%
+    # If usefulness is "Not Useful", make 0, else 1 
+    mutate(usefulness = if_else(usefulness == "Not Useful", 0, 1)) %>%
+    # Group by learning platform 
+    group_by(learning_platform) %>%
+    # Summarize the mean usefulness for each platform
+    summarize(avg_usefulness = mean(usefulness))
+
+# Make a scatter plot of average usefulness by learning platform 
+ggplot(usefulness_by_platform, aes(y = avg_usefulness, x = learning_platform)) + 
+        geom_point()
+
