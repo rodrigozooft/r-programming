@@ -53,3 +53,8 @@ multiple_choice_responses %>%
   ggplot(aes(x = EmployerIndustry, y = mean_age)) + 
     geom_point() + 
     coord_flip()    
+
+# Make a bar plot of the responses
+ggplot(mc_responses_reordered, aes(WorkInternalVsExternalTools)) + 
+    geom_bar() + 
+    coord_flip()
