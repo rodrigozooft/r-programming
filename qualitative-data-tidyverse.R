@@ -185,3 +185,19 @@ multiple_choice_responses %>%
     )) %>%
     # Get a count of how many answers in each generation
     count(generation)
+
+multiple_choice_responses %>%
+    # Filter out people who selected Data Scientist as their Job Title
+    filter(CurrentJobTitleSelect != "Data Scientist") %>%
+    # Create a new variable, job_identity
+    mutate(job_identity = case_when(
+        CurrentJobTitleSelect == "Data Analyst" & 
+        DataScienceIdentitySelect == "Yes" ~ "DS analysts", 
+        CurrentJobTitleSelect == "Data Analyst" & 
+        DataScienceIdentitySelect %in% c("No", "Sort of (Explain more)") ~ "NDS analyst", 
+        CurrentJobTitleSelect != "Data Analyst" & 
+        DataScienceIdentitySelect == "Yes" ~ "DS non-analysts", 
+        TRUE ~ "NDS non analysts")) %>%
+    # Get the average job satisfaction by job_identity, removing NAs
+    group_by(job_identity) %>%
+    summarize(avg_js = mean(JobSatisfaction, na.rm = TRUE))
