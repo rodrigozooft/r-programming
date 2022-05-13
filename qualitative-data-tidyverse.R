@@ -154,3 +154,14 @@ ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) +
     labs(x = "Learning Platform", y = "Percent finding at least somewhat useful") + 
     # change y axis scale to percentage
     scale_y_continuous(labels = scales::percent)
+    
+usefulness_by_platform %>%
+	# reorder learning_platform by avg_usefulness
+	mutate(learning_platform = fct_reorder(learning_platform, avg_usefulness)) %>%
+	# reverse the order of learning_platform
+	mutate(learning_platform = fct_rev(learning_platform)) %>%
+	ggplot(aes(x = learning_platform, y = avg_usefulness)) + 
+	geom_point() + 
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+    labs(x = "Learning Platform", y = "Percent finding at least somewhat useful") + 
+    scale_y_continuous(labels = scales::percent)
