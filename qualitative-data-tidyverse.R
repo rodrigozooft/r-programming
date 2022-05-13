@@ -154,7 +154,7 @@ ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) +
     labs(x = "Learning Platform", y = "Percent finding at least somewhat useful") + 
     # change y axis scale to percentage
     scale_y_continuous(labels = scales::percent)
-    
+
 usefulness_by_platform %>%
 	# reorder learning_platform by avg_usefulness
 	mutate(learning_platform = fct_reorder(learning_platform, avg_usefulness)) %>%
@@ -165,3 +165,23 @@ usefulness_by_platform %>%
     theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
     labs(x = "Learning Platform", y = "Percent finding at least somewhat useful") + 
     scale_y_continuous(labels = scales::percent)
+
+# Check the min age
+min(multiple_choice_responses$Age, na.rm = TRUE)
+
+# Check the max age
+max(multiple_choice_responses$Age, na.rm = TRUE)
+
+multiple_choice_responses %>%
+    # Filter for rows where Age is between 10 and 90
+    filter(between(Age, 10, 90)) %>%
+    # Create the generation variable based on age
+    mutate(generation = case_when(
+    between(Age, 10, 22) ~ "Gen Z", 
+    between(Age, 23, 37) ~ "Gen Y", 
+    between(Age, 38, 52) ~ "Gen X", 
+    between(Age, 53, 71) ~ "Baby Boomer", 
+    between(Age, 72, 90) ~ "Silent"
+    )) %>%
+    # Get a count of how many answers in each generation
+    count(generation)
