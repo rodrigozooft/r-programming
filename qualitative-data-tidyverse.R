@@ -69,3 +69,12 @@ multiple_choice_responses %>%
     # Examine the new level order
     pull(FormalEducation) %>%
     levels()
+
+multiple_choice_responses %>%
+    # rename the appropriate levels to "High school" and "Some college"
+    mutate(FormalEducation = fct_recode(FormalEducation,
+    "High school" = "I did not complete any formal education past high school", 
+    "Some college" = "Some college/university study without earning a bachelor's degree")) %>%
+    # make a bar plot of FormalEducation
+    ggplot(aes(x = FormalEducation)) + 
+    geom_bar()
