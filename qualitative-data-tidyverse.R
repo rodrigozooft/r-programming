@@ -146,3 +146,11 @@ usefulness_by_platform <- learning_platform_usefulness %>%
 ggplot(usefulness_by_platform, aes(y = avg_usefulness, x = learning_platform)) + 
         geom_point()
 
+ggplot(usefulness_by_platform, aes(x = learning_platform, y = avg_usefulness)) + 
+    geom_point() + 
+    # rotate x-axis text by 90 degrees
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+    # rename y and x axis labels
+    labs(x = "Learning Platform", y = "Percent finding at least somewhat useful") + 
+    # change y axis scale to percentage
+    scale_y_continuous(labels = scales::percent)
