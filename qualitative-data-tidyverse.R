@@ -121,3 +121,16 @@ learning_platform_usefulness <- multiple_choice_responses %>%
   # remove "LearningPlatformUsefulness" from each string in learning_platform 
   mutate(learning_platform = str_remove(learning_platform, "LearningPlatformUsefulness"))
 
+perc_useful_platform <- learning_platform_usefulness %>%
+  # change dataset to one row per learning_platform usefulness pair with number of entries for each
+  count(learning_platform, usefulness) %>%
+  # use add_count to create column with total number of answers for that learning_platform
+  add_count(learning_platform, wt = n, name='nn') %>%
+  # create a new column, perc, that is the percentage of people giving that response for that learning_platform
+  mutate(perc = n / nn)
+
+# create a line graph for each question with usefulness on x-axis and percentage of responses on y
+ggplot(perc_useful_platform, aes(x = usefulness, y = perc, group = learning_platform)) + 
+  geom_line() + 
+  facet_wrap(~ learning_platform)
+
