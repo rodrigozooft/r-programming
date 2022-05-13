@@ -78,3 +78,19 @@ multiple_choice_responses %>%
     # make a bar plot of FormalEducation
     ggplot(aes(x = FormalEducation)) + 
     geom_bar()
+
+multiple_choice_responses %>%
+    # Create new variable, grouped_titles, by collapsing levels in CurrentJobTitleSelect
+    mutate(grouped_titles = fct_collapse(CurrentJobTitleSelect, 
+        "Computer Scientist" = c("Programmer", "Software Developer/Software Engineer"), 
+        "Researcher" = "Scientist/Researcher", 
+        "Data Analyst/Scientist/Engineer" = c("DBA/Database Engineer", "Data Scientist", 
+                                              "Business Analyst", "Data Analyst", 
+                                              "Data Miner", "Predictive Modeler"))) %>%
+    # Keep all the new titles and turn every other title into "Other"
+    mutate(grouped_titles = fct_other(grouped_titles, 
+                             keep = c("Computer Scientist", 
+                                     "Researcher", 
+                                     "Data Analyst/Scientist/Engineer"))) %>% 
+    # Get a count of the grouped titles
+    count(grouped_titles)
