@@ -102,3 +102,12 @@ multiple_choice_responses %>%
   mutate(ml_method = fct_lump(MLMethodNextYearSelect, prop = 0.05)) %>%
   # count the frequency of your new variable, sorted in descending order
   count(ml_method, sort = TRUE)
+
+multiple_choice_responses %>%
+  # remove NAs 
+  filter(!is.na(MLMethodNextYearSelect)) %>%
+  # create ml_method, retaining the 5 most common methods and renaming others "other method" 
+  mutate(ml_method = fct_lump(MLMethodNextYearSelect, n = 5, other_level = "other method")) %>%
+  # count the frequency of your new variable, sorted in descending order
+  count(ml_method, sort = TRUE)
+
