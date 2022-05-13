@@ -94,3 +94,11 @@ multiple_choice_responses %>%
                                      "Data Analyst/Scientist/Engineer"))) %>% 
     # Get a count of the grouped titles
     count(grouped_titles)
+
+multiple_choice_responses %>%
+  # remove NAs of MLMethodNextYearSelect
+  filter(!is.na(MLMethodNextYearSelect)) %>%
+  # create ml_method, which lumps all those with less than 5% of people into "Other"
+  mutate(ml_method = fct_lump(MLMethodNextYearSelect, prop = 0.05)) %>%
+  # count the frequency of your new variable, sorted in descending order
+  count(ml_method, sort = TRUE)
