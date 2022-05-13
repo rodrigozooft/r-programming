@@ -58,3 +58,14 @@ multiple_choice_responses %>%
 ggplot(mc_responses_reordered, aes(WorkInternalVsExternalTools)) + 
     geom_bar() + 
     coord_flip()
+
+multiple_choice_responses %>%
+    # Move "I did not complete any formal education past high school" and "Some college/university study without earning a bachelor's degree" to the front
+    mutate(FormalEducation = fct_relevel(FormalEducation, "I did not complete any formal education past high school", "Some college/university study without earning a bachelor's degree")) %>%
+    # Move "I prefer not to answer" to be the last level.
+    mutate(FormalEducation = fct_relevel(FormalEducation, "I prefer not to answer", after = Inf)) %>%
+    # Move "Doctoral degree" to be after the 5th level
+    mutate(FormalEducation = fct_relevel(FormalEducation, "Doctoral degree", after = 5)) %>%
+    # Examine the new level order
+    pull(FormalEducation) %>%
+    levels()
