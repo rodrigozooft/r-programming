@@ -229,3 +229,16 @@ dichotimized_data <- gathered_data %>%
 	filter(!is.na(value)) %>%
     # Dichotomize the value variable to make a new variable, rude
     mutate(rude = if_else(value %in% c('No, not rude at all', 'No, not at all rude'), 0, 1))
+
+rude_behaviors <- gathered_data %>%
+    mutate(response_var = str_replace(response_var, '.*rude to ', '')) %>%
+    mutate(response_var = str_replace(response_var, 'on a plane', '')) %>%
+	# Remove rows that are NA in the value column
+	filter(!is.na(value)) %>%
+    mutate(rude = if_else(value %in% c("No, not rude at all", "No, not at all rude"), 0, 1)) %>%
+    # Group by response_var
+    group_by(response_var) %>%
+    # Create perc_rude, the percent considering each behavior rude
+    summarize(perc_rude = mean(rude))
+
+rude_behaviors
