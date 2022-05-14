@@ -264,3 +264,10 @@ titled_plot
 
 # View your plot
 initial_plot
+
+flipped_plot <- titled_plot + 
+    # Flip the axes
+    coord_flip() + 
+    # Remove the x-axis ticks and labels
+    theme(axis.ticks.x = element_blank(), 
+        axis.text.x = element_blank())
