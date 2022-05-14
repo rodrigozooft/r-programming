@@ -207,3 +207,11 @@ flying_etiquette %>%
     mutate_if(is.character, as.factor) %>%
     # Filter out those who have never flown on a plane
     filter(`How often do you travel by plane?` != "Never")
+
+gathered_data <- flying_etiquette %>%
+    mutate_if(is.character, as.factor) %>%
+    filter(`How often do you travel by plane?` != "Never") %>%
+    # Select columns containing "rude"
+    select(contains("rude")) %>%
+    # Change format from wide to long
+    gather(response_var, value)
