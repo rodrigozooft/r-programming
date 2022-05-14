@@ -215,3 +215,9 @@ gathered_data <- flying_etiquette %>%
     select(contains("rude")) %>%
     # Change format from wide to long
     gather(response_var, value)
+
+gathered_data %>%
+    # Remove everything before and including "rude to " (with that space at the end!)
+    mutate(response_var = str_remove(response_var, ".*rude to ")) %>%
+    # Remove "on a plane"
+    mutate(response_var = str_remove(response_var, "on a plane"))
