@@ -242,3 +242,14 @@ rude_behaviors <- gathered_data %>%
     summarize(perc_rude = mean(rude))
 
 rude_behaviors
+
+initial_plot <- rude_behaviors %>%
+	# reorder response_var by perc_rude
+	mutate(response_var = fct_reorder(response_var, perc_rude)) %>%
+	# make a bar plot of perc_rude by response_var
+	ggplot(aes(x =response_var, y = perc_rude)) + 
+    geom_col()
+
+
+# View your plot
+initial_plot
