@@ -250,6 +250,17 @@ initial_plot <- rude_behaviors %>%
 	ggplot(aes(x =response_var, y = perc_rude)) + 
     geom_col()
 
+titled_plot <- initial_plot + 
+    # Add the title, subtitle, and caption
+    labs(title = "Hell Is Other People In A Pressurized Metal Tube",
+         subtitle = "Percentage of 874 air-passenger respondents who said action is very or somewhat rude",
+         caption = "Source: SurveyMonkey Audience", 
+         # Remove the x- and y-axis labels
+         x = "", 
+         y = "") 
+
+titled_plot
+
 
 # View your plot
 initial_plot
