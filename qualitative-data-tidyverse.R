@@ -221,3 +221,11 @@ gathered_data %>%
     mutate(response_var = str_remove(response_var, ".*rude to ")) %>%
     # Remove "on a plane"
     mutate(response_var = str_remove(response_var, "on a plane"))
+
+dichotimized_data <- gathered_data %>%
+    mutate(response_var = str_replace(response_var, '.*rude to ', '')) %>%
+    mutate(response_var = str_replace(response_var, 'on a plane', '')) %>%
+	# Remove rows that are NA in the value column
+	filter(!is.na(value)) %>%
+    # Dichotomize the value variable to make a new variable, rude
+    mutate(rude = if_else(value %in% c('No, not rude at all', 'No, not at all rude'), 0, 1))
