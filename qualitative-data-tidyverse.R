@@ -271,3 +271,10 @@ flipped_plot <- titled_plot +
     # Remove the x-axis ticks and labels
     theme(axis.ticks.x = element_blank(), 
         axis.text.x = element_blank())
+
+flipped_plot + 
+    # Apply percent() to perc_rude to label above the bar with the perc value
+    geom_text(aes(label = percent(perc_rude), 
+                  y = perc_rude + .03), 
+              position = position_dodge(0.9),
+              vjust = 1)
