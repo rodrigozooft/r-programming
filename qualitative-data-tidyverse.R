@@ -201,3 +201,9 @@ multiple_choice_responses %>%
     # Get the average job satisfaction by job_identity, removing NAs
     group_by(job_identity) %>%
     summarize(avg_js = mean(JobSatisfaction, na.rm = TRUE))
+
+flying_etiquette %>%
+    # Change characters to factors
+    mutate_if(is.character, as.factor) %>%
+    # Filter out those who have never flown on a plane
+    filter(`How often do you travel by plane?` != "Never")
